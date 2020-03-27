@@ -4,62 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
 
-    <p>Open the console to play!</p>
-
-    <script>
-        // Computer chooses from Rock, Paper or Scissors
-        function computerPlay() {
-            var selection = Math.floor(Math.random() * 3);
-
-            switch(selection) {
-                case 0: 
-                    return 'Rock';
-                    break;
-                case 1: 
-                    return 'Paper';
-                    break;
-                case 2:
-                    return 'Scissors';
-                    break;
-            }
-        }
-
-        // Plays a round and returns a string dependent on who won
-        function playRound(playerSelection, computerSelection) {
-            if((playerSelection === 'rock' && computerSelection === 'scissors') ||
-                (playerSelection === 'scissors' && computerSelection === 'paper') ||
-                (playerSelection === 'paper' && computerSelection === 'rock')) {
-                return ("You Win! " + playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
-                + " beats " + computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase());
-            } else if(playerSelection === computerSelection) {
-                return ("It's a draw!")
-            } else {
-                return ("You Lose! " + computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
-                + " beats " + playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase());
-            }
-        }
-
-        // Plays five rounds and handles user input
-        function game() {
-            for(var i = 0; i < 5; i++) {
-                var playerSelection = prompt("Type: Scissors, Paper or Rock");
-                var computerSelection = computerPlay();
-
-                var playerStr = playerSelection.toLowerCase();
-                var computerStr = computerSelection.toLowerCase();
-                if(['scissors', 'paper', 'rock'].indexOf(playerStr) === -1) {
-                    console.log("Please choose either: Scissors, Paper or Rock");
-                } else {
-                    console.log(playRound(playerStr, computerStr));
-                }
-            }
-        }
-
-        game();
-    </script>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+        <p>Made by Nathan Baylon</p>
+    </header>
+    
+    <div class="main">
+        
+        <div class="input left">
+            <h2>Player</h2>
+            <button id="rock-user" class="game-button"><img src="images/rock.png" alt="rock" class="game-image"></button>
+            <button id="paper-user" class="game-button"><img src="images/paper.png" alt="paper" class="game-image"></button>
+            <button id="scissors-user" class="game-button"><img src="images/scissors.png" alt="scissors" class="game-image"></button>
+        </div>
+        <div class="middle">
+            <div id="result-text">
+                Click to make a move!
+            </div>
+            <h2 class="score-heading">Score</h2>
+            <div class="score">
+                <h2 class="score-text">Player: <span id="player-score">0</span></h2>
+                <h2 class="score-text">Draw: <span id="draw-score">0</span></h2>
+                <h2 class="score-text">Computer: <span id="computer-score">0</span></h2>
+            </div>
+        </div>
+        <div class="input right">
+            <h2>Computer</h2>
+            <button class="game-button"><img src="images/rock.png" alt="rock" class="game-image"></button>
+            <button class="game-button"><img src="images/paper.png" alt="paper" class="game-image"></button>
+            <button class="game-button"><img src="images/scissors.png" alt="scissors" class="game-image"></button>
+        </div>
+        
+    </div>
+    
+    <script src="main.js"></script>
 </body>
 </html>
